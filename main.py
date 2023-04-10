@@ -9,4 +9,5 @@ from datacenter.models import Passcard  # noqa: E402
 
 if __name__ == '__main__':
     # Программируем здесь
+    print(Passcard.objects.all())
     print('Количество пропусков:', Passcard.objects.count())  # noqa: T001
