@@ -46,6 +46,22 @@ def print_active_passcards():
     print('Активных пропусков: ', len(active_passcards))
 
 
+def get_all_visits(passcard):
+    all_visits = Visit.objects.filter(passcard=passcard)
+    return all_visits
+
+
+def check_suspicious_visits(all_visits):
+    for visit in all_visits:
+        if visit.leaved_at:
+            delta = visit.leaved_at - visit.entered_at
+            if delta.total_seconds() >= 600:
+                return visit
+
+
 if __name__ == '__main__':
-    print_active_passcards()
-    print_users_in_storage()
+    # print_active_passcards()
+    # print_users_in_storage()
+    passcards = Passcard.objects.all()
+    all_visits = get_all_visits(passcards[0])
+    print(check_suspicious_visits(all_visits))
