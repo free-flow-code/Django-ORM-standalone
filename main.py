@@ -1,8 +1,6 @@
 import os
-from datetime import datetime
 import django
 from django.utils.timezone import localtime
-from django.utils.timezone import make_aware
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings')
 django.setup()
