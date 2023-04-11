@@ -25,4 +25,4 @@ if __name__ == '__main__':
         hours, remainder = divmod(delta.total_seconds(), 3600)
         minutes, seconds = divmod(remainder, 60)
         print('Зашел в хранилище, время по Москве:', timezone_entered_time)
-        print('Находится в хранилище:', f'{int(hours)}:{int(minutes)}:{int(seconds)}')
+        print('Находится в хранилище: ', '%s:%s:%s' % (int(hours), int(minutes), int(seconds)))
