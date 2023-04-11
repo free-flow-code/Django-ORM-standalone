@@ -34,7 +34,6 @@ def print_users_in_storage():
 
 
 def print_active_passcards():
-    passcards = Passcard.objects.all()
     newline = '\n'
     active_passcards = Passcard.objects.filter(is_active=True)
     for passcard in active_passcards:
