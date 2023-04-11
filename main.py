@@ -23,13 +23,7 @@ def format_duration(hours, minutes, seconds):
     return f'{int(hours)}:{int(minutes)}:{int(seconds)}'
 
 
-if __name__ == '__main__':
-    #passcards = Passcard.objects.all()
-    #newline = '\n'
-    #active_passcards = Passcard.objects.filter(is_active=True)
-    #print('Количество пропусков:', Passcard.objects.count())  # noqa: T001
-    #print('Активных пропусков: ', len(active_passcards))
-    #visits = Visit.objects.all()
+def print_users_in_storage():
     in_storage_users = Visit.objects.filter(leaved_at=None)
     for user in in_storage_users:
         print(user.passcard)
@@ -37,3 +31,13 @@ if __name__ == '__main__':
         duration = get_duration(timezone_entered_time)
         print('Зашел в хранилище, время по Москве:', timezone_entered_time)
         print('Находится в хранилище: ', format_duration(*duration))
+
+
+if __name__ == '__main__':
+    #passcards = Passcard.objects.all()
+    #newline = '\n'
+    #active_passcards = Passcard.objects.filter(is_active=True)
+    #print('Количество пропусков:', Passcard.objects.count())  # noqa: T001
+    #print('Активных пропусков: ', len(active_passcards))
+    #visits = Visit.objects.all()
+    print_users_in_storage()
