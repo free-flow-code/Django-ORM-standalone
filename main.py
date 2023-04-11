@@ -2,6 +2,7 @@ import os
 from datetime import datetime
 import django
 from django.utils.timezone import localtime
+from django.utils.timezone import make_aware
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings')
 django.setup()
@@ -21,5 +22,7 @@ if __name__ == '__main__':
         time_now = localtime(timezone=None)
         timezone_entered_time = localtime(value=user.entered_at, timezone=None)
         delta = time_now - timezone_entered_time
+        hours, remainder = divmod(delta.total_seconds(), 3600)
+        minutes, seconds = divmod(remainder, 60)
         print('Зашел в хранилище, время по Москве:', timezone_entered_time)
-        print('Находится в хранилище:', datetime.fromtimestamp(delta.total_seconds()).strftime('%I:%M:%S'))
+        print('Находится в хранилище:', f'{int(hours)}:{int(minutes)}:{int(seconds)}')
