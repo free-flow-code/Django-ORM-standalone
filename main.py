@@ -19,6 +19,7 @@ if __name__ == '__main__':
     #visits = Visit.objects.all()
     in_storage_users = Visit.objects.filter(leaved_at=None)
     for user in in_storage_users:
+        print(user.passcard)
         time_now = localtime(timezone=None)
         timezone_entered_time = localtime(value=user.entered_at, timezone=None)
         delta = time_now - timezone_entered_time
